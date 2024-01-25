@@ -1,4 +1,5 @@
 import { InfoResponse } from "./Api";
+import { CharacterStatusEnums, CharacterGenderEnums, CharacterSpeciesEnums } from "./Enums";
 
 export interface CharacterLocation {
 	name: string;
@@ -8,10 +9,10 @@ export interface CharacterLocation {
 export interface CharacterSchema {
 	id: number;
 	name: string;
-	status: "Alive" | "Dead" | "unknown";
-	species: string;
+	status: CharacterStatusEnums;
+	species: CharacterSpeciesEnums;
 	type: string;
-	gender: "Female" | "Male" | "Genderless" | "unknown";
+	gender: CharacterGenderEnums;
 	origin: CharacterLocation;
 	location: CharacterLocation;
 	image: string;

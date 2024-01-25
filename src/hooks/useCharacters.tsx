@@ -6,7 +6,7 @@ import { fetchCharacters } from "../redux/actions/characterActions";
 import { CharactersResponse } from "../models/Character";
 import { BASE_URL } from "../redux/constants";
 
-export const useCharacters = () => {
+export const useCharacters = (page: number) => {
 	const dispatch = useDispatch<AppDispatch>();
 	const characters = useSelector((state: RootState) => state.characters);
 	const pages = useSelector((state: RootState) => state.characters.pages);

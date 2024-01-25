@@ -10,7 +10,7 @@ interface GridProps {
 
 const CharactersGrid: React.FC<GridProps> = () => {
 	const [page, setPage] = useState<number>(1);
-	const { charactersData, characters, loading, error } = useCharacters();
+	const { charactersData, characters, loading, error, pages } = useCharacters(page);
 	const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
 		setPage(value);
 	};

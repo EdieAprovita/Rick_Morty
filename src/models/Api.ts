@@ -1,7 +1,7 @@
 
 export interface InfoResponse {
-	count: number;
-	pages: number;
+	count: number | null;
+	pages: number | null;
 	next: string | null;
 	prev: string | null;
 }
