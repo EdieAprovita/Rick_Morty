@@ -19,7 +19,7 @@ export const useCharacters = () => {
 			try {
 				const response = await axios.get<CharactersResponse>(`${BASE_URL}/character`);
 				setCharactersData(response.data);
-				dispatch(fetchCharacters());
+				dispatch(fetchCharacters(response.data.results));
 			} catch (error) {
 				const axiosError = error as AxiosError;
 				setError(axiosError.message);
@@ -29,6 +29,6 @@ export const useCharacters = () => {
 		};
 
 		fetchCharactersData();
-	}, [dispatch]);
+	}, [dispatch, charactersData]);
 	return { loading, error, charactersData, characters };
 };

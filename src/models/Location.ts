@@ -1,3 +1,5 @@
+import { InfoResponse } from "./Api";
+
 export interface LocationSchema {
 	id: number;
 	name: string;
@@ -8,14 +10,7 @@ export interface LocationSchema {
 	created: string;
 }
 
-export interface InfoLocationResponse {
-	count: number;
-	pages: number;
-	next: string | null;
-	prev: string | null;
-}
-
 export interface LocationsResponse {
-	info: InfoLocationResponse;
+	info: InfoResponse;
 	results: Location[];
 }

@@ -1,3 +1,5 @@
+import { InfoResponse } from "./Api";
+
 export interface CharacterLocation {
 	name: string;
 	url: string;
@@ -18,14 +20,7 @@ export interface CharacterSchema {
 	created: string;
 }
 
-export interface InfoCharacterResponse {
-	count: number;
-	pages: number;
-	next: string | null;
-	prev: string | null;
-}
-
 export interface CharactersResponse {
-	info: InfoCharacterResponse;
+	info: InfoResponse;
 	results: CharacterSchema[];
 }

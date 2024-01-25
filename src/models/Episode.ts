@@ -1,3 +1,5 @@
+import { InfoResponse } from "./Api";
+
 export interface EpisodeSchema {
 	id: number;
 	name: string;
@@ -6,13 +8,6 @@ export interface EpisodeSchema {
 	characters: string[];
 	url: string;
 	created: string;
-}
-
-export interface InfoResponse {
-	count: number;
-	pages: number;
-	next: string | null;
-	prev: string | null;
 }
 
 export interface EpisodesResponse {
