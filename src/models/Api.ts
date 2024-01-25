@@ -1,3 +1,4 @@
+
 export interface InfoResponse {
 	count: number;
 	pages: number;
@@ -18,3 +19,4 @@ export interface ApiResponse<T> {
 	info: InfoResponse;
 	results: T[];
 }
+

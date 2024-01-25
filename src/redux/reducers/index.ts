@@ -2,6 +2,9 @@ import { combineReducers } from "redux";
 import { charactersReducer } from "./charactersReducers";
 import { episodesReducer } from "./episodesReducers";
 import { locationsReducer } from "./locationsReducers";
+import {
+	CharactersState,EpisodesState,LocationsState
+} from "../../models/index";
 
 const rootReducer = combineReducers({
 	characters: charactersReducer,
@@ -10,9 +13,9 @@ const rootReducer = combineReducers({
 });
 
 export interface RootState {
-	characters: ReturnType<typeof charactersReducer>;
-	episodes: ReturnType<typeof episodesReducer>;
-	locations: ReturnType<typeof locationsReducer>;
+	characters: CharactersState;
+	episodes: EpisodesState;
+	locations: LocationsState;
 }
 
 export default rootReducer;

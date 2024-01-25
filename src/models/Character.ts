@@ -24,3 +24,11 @@ export interface CharactersResponse {
 	info: InfoResponse;
 	results: CharacterSchema[];
 }
+
+export interface CharactersState {
+	loading: boolean;
+	characters: CharacterSchema[] | null;
+	error: string | null;
+	pages: number;
+	count: number;
+}

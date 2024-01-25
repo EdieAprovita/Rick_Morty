@@ -48,8 +48,8 @@ export const charactersReducer = (
 			return {
 				...state,
 				loading: false,
-				pages: (action.payload as CharactersResponse).info.pages,
-				count: (action.payload as CharactersResponse).info.count,
+				pages: action.payload.info.pages,
+				count: action.payload.info.count,
 			};
 		case FETCH_CHARACTERS_FAILURE:
 			return {
