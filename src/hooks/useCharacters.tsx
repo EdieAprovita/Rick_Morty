@@ -6,7 +6,7 @@ import { fetchCharacters } from "../redux/actions/characterActions";
 import { CharactersResponse } from "../models/Character";
 import { BASE_URL } from "../redux/constants";
 
-export const useCharacters = (page: number) => {
+export const useCharacters = () => {
 	const dispatch = useDispatch<AppDispatch>();
 	const characters = useSelector((state: RootState) => state.characters);
 	const pages = useSelector((state: RootState) => state.characters.pages);
@@ -31,6 +31,6 @@ export const useCharacters = (page: number) => {
 		};
 
 		fetchCharactersData();
-	}, [dispatch, charactersData]);
+	}, [dispatch]);
 	return { loading, error, charactersData, characters, pages };
 };
