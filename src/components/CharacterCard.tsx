@@ -1,23 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import {
-	Card,
-	CardActions,
-	CardContent,
-	CardMedia,
-	Button,
-	Typography,
-} from "@mui/material";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { CharacterSchema } from "../models";
-import { AppDispatch } from "../redux/store";
 
 interface CharacterCardProps {
 	character: CharacterSchema;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
-	const dispatch = useDispatch<AppDispatch>();
-
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			<CardMedia
@@ -31,18 +20,15 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 					{character.name}
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					{character.species}
+					Name: {character.species}
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Status: {character.status}
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Location: {character.location.name}
 				</Typography>
 			</CardContent>
-			<CardActions>
-				<Button
-					size="small"
-					onClick={() =>
-						dispatch({ type: "characters/deleteCharacter", payload: character.id })
-					}>
-					Delete
-				</Button>
-			</CardActions>
 		</Card>
 	);
 };

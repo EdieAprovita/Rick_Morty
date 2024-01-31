@@ -27,7 +27,11 @@ const CharactersGrid: React.FC<GridProps> = () => {
 
 	return (
 		<>
-			<Grid container spacing={5} justifyContent="center">
+			<Grid
+				container
+				spacing={5}
+				justifyContent="flex-start"
+				style={{ alignItems: "flex-start" }}>
 				{charactersData?.results.map(character => (
 					<Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
 						<CharacterCard character={character} />

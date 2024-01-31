@@ -22,8 +22,8 @@ export const useCharacters = (page: number) => {
 					`${BASE_URL}/character?page=${page}`
 				);
 				setCharactersData(response.data);
-				console.log(response.data);
 				dispatch(fetchCharacters(response.data.results));
+				console.log(response.data);
 			} catch (error) {
 				const axiosError = error as AxiosError;
 				setError(axiosError.message);
