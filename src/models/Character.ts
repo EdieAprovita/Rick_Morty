@@ -1,5 +1,9 @@
 import { InfoResponse } from "./Api";
-import { CharacterStatusEnums, CharacterGenderEnums, CharacterSpeciesEnums } from "./Enums";
+import {
+	CharacterStatusEnums,
+	CharacterGenderEnums,
+	CharacterSpeciesEnums,
+} from "./Enums";
 
 export interface CharacterLocation {
 	name: string;
