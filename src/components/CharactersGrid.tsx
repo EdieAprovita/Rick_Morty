@@ -30,7 +30,7 @@ const CharactersGrid: React.FC<GridProps> = () => {
 			<Grid container spacing={5} justifyContent="center">
 				{charactersData?.results.map(character => (
 					<Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
-						<CharacterCard character={character} />
+						<CharacterCard data={character} />
 					</Grid>
 				))}
 			</Grid>
