@@ -6,7 +6,7 @@ import { fetchCharacters } from "../redux/actions/characterActions";
 import { CharactersResponse } from "../models/Character";
 import { BASE_URL } from "../redux/constants";
 
-export const useCharacters = () => {
+export const useCharacters = (page: number) => {
 	const dispatch = useDispatch<AppDispatch>();
 	const characters = useSelector((state: RootState) => state.characters);
 	const pages = useSelector((state: RootState) => state.characters.pages);
@@ -18,7 +18,9 @@ export const useCharacters = () => {
 	useEffect(() => {
 		const fetchCharactersData = async () => {
 			try {
-				const response = await axios.get<CharactersResponse>(`${BASE_URL}/character`);
+				const response = await axios.get<CharactersResponse>(
+					`${BASE_URL}/character?page=${page}`
+				);
 				setCharactersData(response.data);
 				console.log(response.data);
 				dispatch(fetchCharacters(response.data.results));
@@ -31,6 +33,6 @@ export const useCharacters = () => {
 		};
 
 		fetchCharactersData();
-	}, [dispatch]);
+	}, [dispatch, page]);
 	return { loading, error, charactersData, characters, pages };
 };
