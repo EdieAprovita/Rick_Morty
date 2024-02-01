@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { CharacterSchema } from "../models";
+import { CharacterSchema } from "../../models";
 
 interface CharacterCardProps {
 	character: CharacterSchema;

@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import { Grid, Stack, Pagination, Typography } from "@mui/material";
 
-import { useCharacters } from "../hooks/useCharacters";
-import { CharactersResponse } from "../models/Character";
-import CharacterCard from "./CharacterCard";
+import { useEpisodes } from "../../hooks/useEpisode";
+import { EpisodesResponse } from "../../models/Episode";
+import EpisodeCard from "./EpisodeCard";
 
 interface GridProps {
-	characters: CharactersResponse | null;
+	episodes: EpisodesResponse | null;
 }
 
-const CharactersGrid: React.FC<GridProps> = () => {
+const EpisodesGrid: React.FC<GridProps> = () => {
 	const [page, setPage] = useState<number>(1);
-	const { charactersData, loading, error, pages } = useCharacters(page);
+	const { episodesData, loading, error, pages } = useEpisodes(page);
 	const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
 		setPage(value);
 	};
 
-	const storeCharacters = localStorage.getItem("characters");
-	const storedCharactersData: CharactersResponse = storeCharacters
-		? JSON.parse(storeCharacters)
+	const storeEpisodes = localStorage.getItem("episodes");
+	const storedEpisodesData: EpisodesResponse = storeEpisodes
+		? JSON.parse(storeEpisodes)
 		: null;
 
-	if (charactersData && !storedCharactersData) {
-		localStorage.setItem("characters", JSON.stringify(charactersData));
+	if (episodesData && !storedEpisodesData) {
+		localStorage.setItem("episodes", JSON.stringify(episodesData));
 	}
 
 	return (
@@ -32,9 +32,9 @@ const CharactersGrid: React.FC<GridProps> = () => {
 				spacing={5}
 				justifyContent="flex-start"
 				style={{ alignItems: "flex-start" }}>
-				{charactersData?.results.map(character => (
-					<Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
-						<CharacterCard character={character} />
+				{episodesData?.results.map(episode => (
+					<Grid item xs={12} sm={6} md={4} lg={3} key={episode.id}>
+						<EpisodeCard episode={episode} />
 					</Grid>
 				))}
 			</Grid>
@@ -54,4 +54,4 @@ const CharactersGrid: React.FC<GridProps> = () => {
 	);
 };
 
-export default CharactersGrid;
+export default EpisodesGrid;
