@@ -1,29 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Stack, Pagination, Typography } from "@mui/material";
-
-import { useCharacters } from "../../hooks/useCharacters";
-import { CharactersResponse } from "../../models/Character";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCharacters } from "../../redux/slice/characterSlice";
+import { AppDispatch, RootState } from "../../redux/store";
 import CharacterCard from "./CharacterCard";
 
-interface GridProps {
-	characters: CharactersResponse | null;
-}
-
-const CharactersGrid: React.FC<GridProps> = () => {
+const CharactersGrid: React.FC = () => {
 	const [page, setPage] = useState<number>(1);
-	const { charactersData, loading, error, pages } = useCharacters(page);
+	const dispatch = useDispatch<AppDispatch>();
+	const { loading, error, characters, pages } = useSelector(
+		(state: RootState) => state.character
+	);
+
+	useEffect(() => {
+		dispatch(fetchCharacters(page));
+	}, [dispatch, page]);
+
 	const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
 		setPage(value);
 	};
-
-	const storeCharacters = localStorage.getItem("characters");
-	const storedCharactersData: CharactersResponse = storeCharacters
-		? JSON.parse(storeCharacters)
-		: null;
-
-	if (charactersData && !storedCharactersData) {
-		localStorage.setItem("characters", JSON.stringify(charactersData));
-	}
 
 	return (
 		<>
@@ -32,7 +27,7 @@ const CharactersGrid: React.FC<GridProps> = () => {
 				spacing={5}
 				justifyContent="flex-start"
 				style={{ alignItems: "flex-start" }}>
-				{charactersData?.results.map(character => (
+				{characters?.map(character => (
 					<Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
 						<CharacterCard character={character} />
 					</Grid>
