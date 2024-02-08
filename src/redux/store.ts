@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import characterSlice from "./slice/characterSlice";
+import episodesSlice from "./slice/episodeSlice";
 
 const store = configureStore({
 	reducer: {
 		character: characterSlice,
+		episodes: episodesSlice,
 	},
 });
 

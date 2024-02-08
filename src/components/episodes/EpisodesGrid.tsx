@@ -1,29 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Stack, Pagination, Typography } from "@mui/material";
-
-import { useEpisodes } from "../../hooks/useEpisode";
-import { EpisodesResponse } from "../../models/Episode";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEpisodes } from "../../redux/slice/episodeSlice";
+import { AppDispatch, RootState } from "../../redux/store";
 import EpisodeCard from "./EpisodeCard";
 
-interface GridProps {
-	episodes: EpisodesResponse | null;
-}
-
-const EpisodesGrid: React.FC<GridProps> = () => {
+const EpisodesGrid: React.FC = () => {
 	const [page, setPage] = useState<number>(1);
-	const { episodesData, loading, error, pages } = useEpisodes(page);
+	const dispatch = useDispatch<AppDispatch>();
+	const { loading, error, episodes, pages } = useSelector(
+		(state: RootState) => state.episodes
+	);
+
+	useEffect(() => {
+		dispatch(fetchEpisodes(page));
+	}, [dispatch, page]);
+
 	const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
 		setPage(value);
 	};
-
-	const storeEpisodes = localStorage.getItem("episodes");
-	const storedEpisodesData: EpisodesResponse = storeEpisodes
-		? JSON.parse(storeEpisodes)
-		: null;
-
-	if (episodesData && !storedEpisodesData) {
-		localStorage.setItem("episodes", JSON.stringify(episodesData));
-	}
 
 	return (
 		<>
@@ -32,7 +27,7 @@ const EpisodesGrid: React.FC<GridProps> = () => {
 				spacing={5}
 				justifyContent="flex-start"
 				style={{ alignItems: "flex-start" }}>
-				{episodesData?.results.map(episode => (
+				{episodes?.map(episode => (
 					<Grid item xs={12} sm={6} md={4} lg={3} key={episode.id}>
 						<EpisodeCard episode={episode} />
 					</Grid>
