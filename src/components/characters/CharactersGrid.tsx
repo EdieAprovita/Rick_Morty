@@ -9,7 +9,7 @@ const CharactersGrid: React.FC = () => {
 	const [page, setPage] = useState<number>(1);
 	const dispatch = useDispatch<AppDispatch>();
 	const { loading, error, characters, pages } = useSelector(
-		(state: RootState) => state.character
+		(state: RootState) => state.characters
 	);
 
 	useEffect(() => {

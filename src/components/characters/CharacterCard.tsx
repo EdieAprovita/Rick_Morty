@@ -28,6 +28,12 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 				<Typography variant="body2" color="text.secondary">
 					Location: {character.location.name}
 				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Origin: {character.origin.name}
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Species: {character.species}
+				</Typography>
 			</CardContent>
 		</Card>
 	);

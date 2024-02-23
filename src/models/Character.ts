@@ -20,7 +20,7 @@ export interface CharacterSchema {
 	origin: CharacterLocation;
 	location: CharacterLocation;
 	image: string;
-	episode: string[];
+	episode: Array<string>;
 	url: string;
 	created: string;
 }

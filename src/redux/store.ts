@@ -4,7 +4,7 @@ import episodesSlice from "./slice/episodeSlice";
 
 const store = configureStore({
 	reducer: {
-		character: characterSlice,
+		characters: characterSlice,
 		episodes: episodesSlice,
 	},
 });
