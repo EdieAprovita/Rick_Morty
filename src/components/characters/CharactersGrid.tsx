@@ -23,6 +23,7 @@ const CharactersGrid: React.FC = () => {
 	return (
 		<>
 			<Grid
+				sx={{ marginTop: 2 }}
 				container
 				spacing={5}
 				justifyContent="flex-start"
