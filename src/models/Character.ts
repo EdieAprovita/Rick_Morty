@@ -1,4 +1,5 @@
 import { InfoResponse } from "./Api";
+import { EpisodeSchema } from "./Episode";
 import {
 	CharacterStatusEnums,
 	CharacterGenderEnums,
@@ -20,7 +21,7 @@ export interface CharacterSchema {
 	origin: CharacterLocation;
 	location: CharacterLocation;
 	image: string;
-	episode: Array<string>;
+	episode: EpisodeSchema[];
 	url: string;
 	created: string;
 }

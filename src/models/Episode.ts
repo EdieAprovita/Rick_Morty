@@ -1,11 +1,12 @@
 import { InfoResponse } from "./Api";
+import { CharacterSchema } from "./Character";
 
 export interface EpisodeSchema {
 	id: number;
 	name: string;
 	air_date: string;
 	episode: string;
-	characters: string[];
+	characters: CharacterSchema[];
 	url: string;
 	created: string;
 }
